@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'artanetwork.ir', 'www.artanetwork.ir
 # Application definition
 
 INSTALLED_APPS = [
+    'filebrowser',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
+    'core.apps.CoreConfig',
 ]
 
 MIDDLEWARE = [
@@ -126,6 +128,9 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'assets/',]
 
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -135,6 +140,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Production settings
 
 if os.getenv('DEBUG') == 'false':
+    STATIC_ROOT = '/usr/src/app/staticfiles/'
+    MEDIA_ROOT = '/usr/src/app/media/'
+
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
