@@ -39,8 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'sorl.thumbnail',
+    'ckeditor',
+    'ckeditor_uploader',
     'accounts.apps.AccountsConfig',
     'core.apps.CoreConfig',
+    'homepage.apps.HomepageConfig',
 ]
 
 MIDDLEWARE = [
@@ -136,6 +140,35 @@ MEDIA_ROOT = BASE_DIR / 'media/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# sorl-thumbnail settings
+# https://sorl-thumbnail.readthedocs.io/en/latest/index.html
+
+THUMBNAIL_PADDING_COLOR = 'rgba(0, 0, 0, 0)'
+
+# django-ckeditor settings
+# https://django-ckeditor.readthedocs.io/en/latest/
+
+CKEDITOR_IMAGE_BACKEND = 'ckeditor_uploader.backends.PillowBackend'
+CKEDITOR_RESTRICT_BY_DATE = True
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'skin': 'moonocolor',
+        'width': '800px',
+        'toolbar': [
+            {'name': 'basicstyles', 'items': ['Bold', 'Italic', 'Underline', 'TextColor', 'BGColor']},
+            {'name': 'paragraph', 'items': ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', 'BidiLtr', 'BidiRtl']},
+        ],
+        'addCss': {
+            'body': {
+                'font-family': 'Vazirmatn',
+            }
+        },
+    },
+}
 
 
 # Production settings

@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% load static %}
+
+{% block extrastyle %}
+        <style>
+            .slider {
+                background: url('{% static 'homepage/img/hero-bg.png' %}') top center no-repeat;
+                background-size: cover;
+            }
+        </style>
+{% endblock %}
+
+{% block content %}
+        <!-- Slider Section - Home Page -->
+        <section id="slider" class="slider align-items-center">
+
+            <div class="swiper">
+                <script type="application/json" class="swiper-config">
+                    {
+                        "loop": true,
+                        "speed": 500,
+                        "effect": "slide",
+                        "autoplay": {
+                            "delay": 5000
+                        },
+                        "slidesPerView": 1,
+                        "pagination": {
+                            "el": ".swiper-pagination",
+                            "type": "bullets",
+                            "clickable": true
+                        }
+                    }
+                </script>
+
+                <div class="swiper-wrapper">
+
+                    {% for slide in slides %}
+                    <div class="swiper-slide">
+                        <div class="container">
+                            <div class="row">
+
+                                <div class="col-lg-6 d-flex flex-column justify-content-center order-2 order-lg-1">
+                                    <h1>{{ slide.slide_title }}</h1>
+                                    <h2>{{ slide.slide_subtitle }}</h2>
+                                    <div class="d-flex justify-content-center justify-content-lg-start">
+                                        <a href="#contact" class="btn-getstarted">تماس بگیرید</a>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 d-flex flex-column justify-content-center order-1 order-lg-2">
+                                    {% thumbnail slide.slide_image "2048x2048" format="PNG" padding=True as im %}
+                                    <img src="{{ im.url }}" class="img-fluid" alt="">
+                                    {% endthumbnail %}
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                
+                </div>
+
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </section><!-- End Slider Section -->
+
+        <!-- About Section - Home Page -->
+        <section id="about" class="about">
+
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+                <div class="row align-items-xl-center gy-5">
+
+                    <div class="col-xl-5 content">
+                        <h3>درباره ما</h3>
+                        <h2>{{ about.about_title }}</h2>
+                        <p>{{ about.about_description | safe }}</p>
+                    </div>
+
+                    <div class="col-lg-7">
+                        <div class="row gy-4 icon-boxes">
+
+                            {% for activity in activities %}
+                            <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                                <div class="icon-box">
+                                    <i class="bi bi-award"></i>
+                                    <h3>{{ activity.activity_title }}</h3>
+                                    <p>{{ activity.activity_description | safe }}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section><!-- End About Section -->
+
+        <!-- Stats Section - Home Page -->
+        <section id="stats" class="stats">
+
+            <img src="{% static 'homepage/img/stats-bg.jpg' %}" data-aos="fade-up" alt="">
+
+            <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+
+                <div class="row gy-4">
+
+                    {% for stat in stats %}
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stats-item text-center w-100 h-100">
+                            <span data-purecounter-start="0" data-purecounter-end="{{ stat.stat_number }}" data-purecounter-duration="1" class="purecounter"></span>
+                            <p>{{ stat.stat_title }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+        </section><!-- End Stats Section -->
+
+{% endblock %}
