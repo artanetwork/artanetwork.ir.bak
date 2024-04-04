@@ -3,6 +3,12 @@
     height: 85vh;
 }
 
+@media screen and (max-width: 992px) {
+  .slider {
+    height: 100vh;
+  }
+}
+
 .slider h1 {
     margin: 0;
     font-size: 48px;
