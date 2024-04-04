@@ -62,6 +62,10 @@ class Activity(models.Model):
         'تشریح فعالیت', help_text='تشریح فعالیت که در بخش "درباره ما" نمایش داده می‌شود.'
     )
 
+    activity_icon = models.CharField(
+        'آیکون', max_length=50, blank=True, help_text=('آیکون این فعالیت')
+    )
+
     class Meta:
         verbose_name = 'حوزه فعالیت'
         verbose_name_plural = 'حوزه‌های فعالیت'
