@@ -21,6 +21,10 @@ from django.urls import include, path
 
 from filebrowser.sites import site
 
+admin.site.site_header = 'سایت آرتا شبکه صنعت رایان'
+admin.site.site_title = 'سایت آرتا شبکه صنعت رایان'
+admin.site.index_title = 'پنل مدیریت'
+
 urlpatterns = [
     path('admin/filebrowser/', site.urls),
     path('admin/', admin.site.urls),
