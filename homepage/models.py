@@ -90,3 +90,20 @@ class Stat(models.Model):
 
     def __str__(self):
         return self.stat_title
+
+
+class Project(models.Model):
+    employer = models.CharField(
+        'کارفرما', max_length=255, help_text=('نام کارفرمای پروژه')
+    )
+    description = models.TextField('عنوان', help_text=('جزئیات پروژه'))
+    icon = models.CharField(
+        'آیکون', max_length=50, blank=True, help_text=('آیکون پروژه')
+    )
+
+    class Meta:
+        verbose_name = 'پروژه'
+        verbose_name_plural = 'پروژه‌ها'
+
+    def __str__(self):
+        return self.employer

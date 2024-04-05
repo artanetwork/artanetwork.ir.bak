@@ -126,4 +126,36 @@
 
         </section><!-- End Stats Section -->
 
+        <!-- Projects Section - Home Page -->
+        <section id="services" class="services">
+
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <h2>پروژه‌ها</h2>
+                <p>لیست تعدادی از پروژه‌های ما که برای کارفرمایان محترم انجام داده‌ایم</p>
+            </div><!-- End Section Title -->
+
+            <div class="container">
+
+                <div class="row gy-4">
+
+                    {% for project in projects %}
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="service-item d-flex">
+                            <div class="icon flex-shrink-0"><i class="bi {{ project.icon }}"></i></div>
+                            <div>
+                                <h4 class="title"><a href="#" class="stretched-link">{{ project.employer }}</a></h4>
+                                <p class="description">{{ project.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Project Item -->
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+        </section><!-- End Projects Section -->
+
 {% endblock %}

@@ -734,11 +734,11 @@ section,
 }
 
 .section-title h2:before {
-  margin: 0 15px 10px 0;
+  margin: 0 0px 10px 15px;
 }
 
 .section-title h2:after {
-  margin: 0 0 10px 15px;
+  margin: 0 15px 10px 0px;
 }
 
 .section-title p {
@@ -1115,7 +1115,7 @@ section,
   width: 48px;
   height: 48px;
   position: relative;
-  margin-right: 50px;
+  margin-left: 50px;
   line-height: 0;
 }
 
@@ -1136,7 +1136,7 @@ section,
   border-radius: 50px;
   z-index: 1;
   bottom: -15px;
-  right: -15px;
+  left: -15px;
   transition: 0.3s;
 }
 

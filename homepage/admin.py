@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import About, Activity, Slide, Stat
+from .models import About, Activity, Project, Slide, Stat
 
 # Register your models here.
 
@@ -23,3 +23,8 @@ class ActivityAdmin(admin.ModelAdmin):
 @admin.register(Stat)
 class StatAdmin(admin.ModelAdmin):
     list_display = ('stat_title',)
+
+
+@admin.register(Project)
+class ProjectAdmin(admin.ModelAdmin):
+    list_display = ('employer',)
