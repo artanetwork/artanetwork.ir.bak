@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
-import os
+import os, sys
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -42,9 +42,11 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
     'ckeditor',
     'ckeditor_uploader',
+    'jalali_date',
     'accounts.apps.AccountsConfig',
     'core.apps.CoreConfig',
     'homepage.apps.HomepageConfig',
+    'news.apps.NewsConfig',
 ]
 
 MIDDLEWARE = [
@@ -168,7 +170,41 @@ CKEDITOR_CONFIGS = {
             }
         },
     },
+    'extended': {
+        'skin': 'moonocolor',
+        'width': '800px',
+        'toolbar': [
+            {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
+            {'name': 'basicstyles', 'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', 'RemoveFormat', 'TextColor', 'BGColor']},
+            '/',
+            {'name': 'paragraph', 'items': ['NumberedList', 'BulletedList', 'Blockquote', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', 'BidiLtr', 'BidiRtl']},
+            {'name': 'links', 'items': ['Link', 'Unlink', 'Anchor']},
+            {'name': 'insert', 'items': ['Image', 'Table', 'HorizontalRule', 'EmojiPanel']},
+            '/',
+            {'name': 'clipboard', 'items': ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']},
+            {'name': 'editing', 'items': ['Find', 'Replace', '-', 'SelectAll']},
+        ],
+        'extraPlugins': ('uploadimage', 'image2', 'emoji', 'autocomplete'),
+        'removePlugins': 'image',
+    }
 }
+
+# django-jalali-date settings
+# https://pypi.org/project/django-jalali-date/
+
+JALALI_DATE_DEFAULTS = {
+    'LIST_DISPLAY_AUTO_CONVERT': True,
+    'Strftime': {
+        'date': '%A',
+        'datetime': '%A %d %B %y ساعت %H:%M',
+    }
+}
+
+import locale
+if (sys.platform == 'linux'):
+    locale.setlocale(locale.LC_ALL, 'fa_IR.UTF-8')
+elif (sys.platform == 'win32'):
+    locale.setlocale(locale.LC_ALL, 'Persian_Iran.UTF-8')
 
 
 # Production settings

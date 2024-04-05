@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load thumbnail %}
 {% load static %}
+{% load jalali_tags %}
 
 {% block title %}{{ site_settings.homepage_title }}{% endblock %}
 
@@ -157,5 +158,44 @@
             </div>
 
         </section><!-- End Projects Section -->
+
+        <!-- Recent News Section - Home Page -->
+        <section id="recent-news" class="recent-posts">
+
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <h2>آخرین اخبار</h2>
+            </div><!-- End Section Title -->
+
+            <div class="container">
+
+                <div class="row gy-4">
+
+                    {% for article in news %}
+                    <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+
+                        <article>
+
+                            <div class="post-img">
+                                <img src="{{ article.image.url }}" alt="" class="img-fluid">
+                            </div>
+
+                            <p class="post-category">{{ article.category }}</p>
+
+                            <h2 class="title">
+                                <a href="#">{{ article.title }}</a>
+                            </h2>
+
+                        </article>
+
+                    </div><!-- End news list item -->
+                    {% endfor %}
+
+                </div><!-- End recent news list -->
+
+            </div>
+
+        </section><!-- End Recent News Section -->
+
 
 {% endblock %}

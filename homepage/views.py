@@ -1,5 +1,7 @@
 from django.views.generic import TemplateView
 
+from news.models import News
+
 from .models import About, Activity, Project, Slide, Stat
 
 # Create your views here.
@@ -15,4 +17,5 @@ class HomepageView(TemplateView):
         context['activities'] = Activity.objects.all()
         context['stats'] = Stat.objects.all()
         context['projects'] = Project.objects.all()
+        context['news'] = News.published.all()[:3]
         return context
